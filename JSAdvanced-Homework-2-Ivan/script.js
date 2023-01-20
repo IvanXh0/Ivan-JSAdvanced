@@ -22,6 +22,7 @@ let reminders = [];
 
 let tableId = "reminder-table";
 let table = document.createElement("table");
+table.style.border = "1px solid black";
 table.id = tableId;
 document.body.appendChild(table);
 

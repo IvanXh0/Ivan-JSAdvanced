@@ -20,6 +20,11 @@ let createReminderBtn = document.getElementById("createRemainderButton");
 let showReminderBtn = document.getElementById("showRemainderButton");
 let reminders = [];
 
+let tableId = "reminder-table";
+let table = document.createElement("table");
+table.id = tableId;
+document.body.appendChild(table);
+
 function Reminder(title, priority, color, description) {
   this.title = title;
   this.priority = priority;
@@ -36,13 +41,14 @@ createReminderBtn.addEventListener("click", () => {
   ) {
     alert("Please fill in ALL the fields before submitting!");
   } else {
-    let reminder = {
-      title: titleElem.value,
-      priority: priorityElem.value,
-      color: colorElem.value,
-      description: description.value,
-    };
-    reminders.push(reminder);
+    reminders.push(
+      new Reminder(
+        titleElem.value,
+        priorityElem.value,
+        colorElem.value,
+        description.value
+      )
+    );
 
     titleElem.value = "";
     priorityElem.value = "";
@@ -52,11 +58,12 @@ createReminderBtn.addEventListener("click", () => {
 });
 
 showReminderBtn.addEventListener("click", () => {
-  reminders.sort(function (a, b) {
-    return a.priority - b.priority;
-  });
+  if (!reminders.length) {
+    alert("The list of reminders is empty!");
+    return;
+  }
 
-  let table = document.createElement("table");
+  table.innerHTML = "";
 
   let headerRow = document.createElement("tr");
   let titleHeader = document.createElement("th");
@@ -69,7 +76,6 @@ showReminderBtn.addEventListener("click", () => {
   headerRow.appendChild(priorityHeader);
   headerRow.appendChild(descriptionHeader);
   table.appendChild(headerRow);
-
   for (const reminder of reminders) {
     let row = document.createElement("tr");
     let title = document.createElement("td");
@@ -84,5 +90,4 @@ showReminderBtn.addEventListener("click", () => {
     row.appendChild(description);
     table.appendChild(row);
   }
-  document.body.appendChild(table);
 });

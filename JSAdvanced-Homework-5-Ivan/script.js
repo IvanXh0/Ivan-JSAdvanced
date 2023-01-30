@@ -75,6 +75,8 @@ const getNumberStats = (num) => {
 
 getNumberStats(-25);
 
+// Simplified version
+
 const simplifiedGetNumberStats = (num) => {
   const length = num < 0 ? num.toString().length - 1 : num.toString();
   const evenOdd = num % 2 === 0 ? "Even" : "Odd";

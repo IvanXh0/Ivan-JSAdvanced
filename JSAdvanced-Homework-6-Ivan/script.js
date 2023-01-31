@@ -71,7 +71,8 @@ axios
     // All male students with a name starting with B and average grade over 2
 
     let maleStudentsStartingWithBandGradeOverTwo = students.filter(
-      (student) => student.firstName.startsWith("B") && student.averageGrade > 2
+      (student) => student.firstName.startsWith("B") && student.averageGrade > 2 &&
+        student.gender === "Male"
     );
     console.log(
       "All male students with a name starting with B and average grade over 2:",

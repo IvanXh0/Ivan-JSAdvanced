@@ -40,7 +40,7 @@ axios
     // All male student full names who live in Skopje and are over 18 years old
 
     let maleStudentsInSkopjeAndOverEighteen = students
-      .filter((student) => student.city === "Skopje" && student.age >= 18)
+      .filter((student) => student.city === "Skopje" && student.age >= 18 && student.gender === "Male")
       .map((student) => `${student.firstName} ${student.lastName}`);
     console.log(
       "All male student full names who live in Skopje and are over 18 years old",
